@@ -2,14 +2,19 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { ReactComponent as Logo } from "../../components/assets/crown.svg";
-
+import { createStructuredSelector } from "reselect";
 import { auth } from "../../firebase/firebase.utils";
 import Cart from "../cart-icon/CartIcon";
 import CartDropdown from "../cart-dropdown/CartDropdown";
+import { selectCartHidden } from "../../redux/cart/cart-selectors";
+import { selectCurrentUser } from "../../redux/user/user-selector";
 
 const Header = () => {
-  const currentUser = useSelector((state) => state.user.currentUser);
-  const toggle = useSelector((state) => state.cart.hidden);
+  const user = useSelector((state) => state);
+  const cart = useSelector((state) => state);
+
+  const currentUser = selectCurrentUser(user);
+  const toggle = selectCartHidden(cart);
 
   return (
     <div className="header">

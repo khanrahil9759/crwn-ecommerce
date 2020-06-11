@@ -7,11 +7,15 @@ import Shop from "./pages/shop/Shop";
 import Header from "./components/header/Header";
 import SignInSignUp from "./pages/sign-in-sign-up/SignInSignUp";
 import { setCurrentUser } from "./redux/user/user-actions";
+import { selectCurrentUser } from "./redux/user/user-selector";
 import "./App.css";
+import Checkout from "./pages/checkout/Checkout";
 
 function App() {
   const dispatch = useDispatch();
-  const currentUser = useSelector((state) => state.user.currentUser);
+  const state = useSelector((state) => state);
+
+  const currentUser = selectCurrentUser(state);
 
   let unsubscribeFromAuth = null;
 
@@ -40,7 +44,6 @@ function App() {
   return (
     <Fragment>
       <Header />
-      <button onClick={() => console.log(currentUser)}>click</button>
       <Switch>
         <Route path="/" exact component={Homepage} />
         <Route path="/shop" exact component={Shop} />
@@ -49,6 +52,7 @@ function App() {
           exact
           render={() => (currentUser ? <Redirect to="/" /> : <SignInSignUp />)}
         />
+        <Route path="/checkout" exact component={Checkout} />
       </Switch>
     </Fragment>
   );
