@@ -1,6 +1,6 @@
 import React from "react";
 import { useDispatch } from "react-redux";
-import toggleCartHidden from "../../redux/cart/cart-actions";
+import { toggleCartHidden } from "../../redux/cart/cart-actions";
 
 import { ReactComponent as CartIcon } from "../assets/cart.svg";
 
