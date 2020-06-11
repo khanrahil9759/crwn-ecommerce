@@ -20,6 +20,7 @@ const SignIn = () => {
     e.preveventDefault();
     try {
       await auth.signInWithEmailAndPassword(email, password);
+      //   console.log(res, "ddd");
       setState({
         email: "",
         password: "",
@@ -52,7 +53,7 @@ const SignIn = () => {
           required
         />
         <div className="buttons">
-          <CustomButton type="submit"> Sign in </CustomButton>
+          <CustomButton onClick={handleSubmit}> Sign in </CustomButton>
           <CustomButton onClick={SignInWithGoogle} isGoogleSignIn>
             Sign in with Google
           </CustomButton>
