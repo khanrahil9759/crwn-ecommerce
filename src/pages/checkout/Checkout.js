@@ -1,5 +1,5 @@
 import React from "react";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import {
   selectCartItems,
   selectCartTotal,
@@ -33,7 +33,7 @@ const Checkout = () => {
       </div>
       {cartItems.map((cartItem) => (
         <CheckoutItem key={cartItem.id} cartItem={cartItem} />
-      ))}{" "}
+      ))}
       <div className="total">TOTAL: ${total}</div>
     </div>
   );
