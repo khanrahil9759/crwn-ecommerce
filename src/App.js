@@ -8,8 +8,8 @@ import Header from "./components/header/Header";
 import SignInSignUp from "./pages/sign-in-sign-up/SignInSignUp";
 import { setCurrentUser } from "./redux/user/user-actions";
 import { selectCurrentUser } from "./redux/user/user-selector";
-import "./App.css";
 import Checkout from "./pages/checkout/Checkout";
+import "./App.css";
 
 function App() {
   const dispatch = useDispatch();
