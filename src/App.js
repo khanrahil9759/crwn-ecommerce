@@ -1,17 +1,19 @@
-import React, { Fragment, useEffect, useState } from "react";
+import React, { Fragment, useEffect } from "react";
 import { Route, Switch, Redirect } from "react-router-dom";
 import { auth, createUserProfileDocument } from "./firebase/firebase.utils";
 import { useDispatch, useSelector } from "react-redux";
+import { setCurrentUser } from "./redux/user/user-actions";
+import { selectCurrentUser } from "./redux/user/user-selector";
+
 import Homepage from "./pages/homepage/Homepage";
 import Shop from "./pages/shop/Shop";
 import Header from "./components/header/Header";
 import SignInSignUp from "./pages/sign-in-sign-up/SignInSignUp";
-import { setCurrentUser } from "./redux/user/user-actions";
-import { selectCurrentUser } from "./redux/user/user-selector";
 import Checkout from "./pages/checkout/Checkout";
+
 import "./App.css";
 
-function App() {
+const App = () => {
   const dispatch = useDispatch();
   const state = useSelector((state) => state);
 
@@ -46,7 +48,7 @@ function App() {
       <Header />
       <Switch>
         <Route path="/" exact component={Homepage} />
-        <Route path="/shop" exact component={Shop} />
+        <Route path="/shop" component={Shop} />
         <Route
           path="/signin"
           exact
@@ -56,6 +58,6 @@ function App() {
       </Switch>
     </Fragment>
   );
-}
+};
 
 export default App;
